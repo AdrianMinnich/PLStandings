@@ -7,4 +7,4 @@ Functionalities:
 - displaying team info after tapping on them
 
 TODO:
- - giving an opportunity to enter remaining result of the season and updating table
+ - giving an opportunity to enter remaining results of the season and updating table

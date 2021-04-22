@@ -18,6 +18,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         table.register(TeamTableViewCell.nib(), forCellReuseIdentifier: TeamTableViewCell.identifier)
 
+        title = "Standings"
+        
         table.delegate = self
         table.dataSource = self
         
@@ -28,8 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.standings.removeAll()
         
-        // get data from local json
-        guard let fileLocation = Bundle.main.url(forResource: "data", withExtension: "json") else { return }
+        guard let fileLocation = Bundle.main.url(forResource: "currentStandings", withExtension: "json") else { return }
         
         var result: Standings?
         
@@ -84,10 +85,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         table.deselectRow(at: indexPath, animated: true)
+        
+        let vc = storyboard?.instantiateViewController(identifier: TeamViewController.identifier) as! TeamViewController
+        
+        vc.title = "Team Info"
+        vc.team = standings[indexPath.row]
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0
+        return 50.0
     }
 }
 

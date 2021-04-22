@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5FA3027D2631F539001D80D4 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA3027C2631F539001D80D4 /* TeamViewController.swift */; };
 		5FC7CB072630E26700A3C146 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC7CB062630E26700A3C146 /* AppDelegate.swift */; };
 		5FC7CB092630E26700A3C146 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC7CB082630E26700A3C146 /* SceneDelegate.swift */; };
 		5FC7CB0B2630E26700A3C146 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC7CB0A2630E26700A3C146 /* ViewController.swift */; };
@@ -15,10 +16,11 @@
 		5FC7CB132630E29500A3C146 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FC7CB112630E29500A3C146 /* LaunchScreen.storyboard */; };
 		5FC7CB1E2630EC7B00A3C146 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC7CB1C2630EC7B00A3C146 /* TeamTableViewCell.swift */; };
 		5FC7CB1F2630EC7B00A3C146 /* TeamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FC7CB1D2630EC7B00A3C146 /* TeamTableViewCell.xib */; };
-		5FC7CB22263180D600A3C146 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FC7CB21263180D600A3C146 /* data.json */; };
+		5FC7CB22263180D600A3C146 /* currentStandings.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FC7CB21263180D600A3C146 /* currentStandings.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5FA3027C2631F539001D80D4 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		5FC7CB032630E26700A3C146 /* PLStandings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PLStandings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FC7CB062630E26700A3C146 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FC7CB082630E26700A3C146 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,7 +31,7 @@
 		5FC7CB142630E29500A3C146 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FC7CB1C2630EC7B00A3C146 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
 		5FC7CB1D2630EC7B00A3C146 /* TeamTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamTableViewCell.xib; sourceTree = "<group>"; };
-		5FC7CB21263180D600A3C146 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = data.json; path = ../../../../data.json; sourceTree = "<group>"; };
+		5FC7CB21263180D600A3C146 /* currentStandings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = currentStandings.json; path = ../../../../currentStandings.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +64,12 @@
 		5FC7CB052630E26700A3C146 /* PLStandings */ = {
 			isa = PBXGroup;
 			children = (
-				5FC7CB21263180D600A3C146 /* data.json */,
+				5FC7CB21263180D600A3C146 /* currentStandings.json */,
 				5FC7CB1B2630EC6A00A3C146 /* TeamCell */,
 				5FC7CB062630E26700A3C146 /* AppDelegate.swift */,
 				5FC7CB082630E26700A3C146 /* SceneDelegate.swift */,
 				5FC7CB0A2630E26700A3C146 /* ViewController.swift */,
+				5FA3027C2631F539001D80D4 /* TeamViewController.swift */,
 				5FC7CB0C2630E26700A3C146 /* Main.storyboard */,
 				5FC7CB0F2630E29500A3C146 /* Assets.xcassets */,
 				5FC7CB112630E29500A3C146 /* LaunchScreen.storyboard */,
@@ -144,7 +147,7 @@
 				5FC7CB1F2630EC7B00A3C146 /* TeamTableViewCell.xib in Resources */,
 				5FC7CB132630E29500A3C146 /* LaunchScreen.storyboard in Resources */,
 				5FC7CB102630E29500A3C146 /* Assets.xcassets in Resources */,
-				5FC7CB22263180D600A3C146 /* data.json in Resources */,
+				5FC7CB22263180D600A3C146 /* currentStandings.json in Resources */,
 				5FC7CB0E2630E26700A3C146 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,6 +163,7 @@
 				5FC7CB0B2630E26700A3C146 /* ViewController.swift in Sources */,
 				5FC7CB072630E26700A3C146 /* AppDelegate.swift in Sources */,
 				5FC7CB092630E26700A3C146 /* SceneDelegate.swift in Sources */,
+				5FA3027D2631F539001D80D4 /* TeamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

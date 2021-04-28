@@ -48,5 +48,4 @@ class TeamViewController: UIViewController {
         gcLabel.text = "\(team.goals_conceded)"
         gdLabel.text = "\(team.goalDiff)"
     }
- 
 }

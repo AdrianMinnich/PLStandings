@@ -1,46 +1,52 @@
 {
-  "matchday": [
-	"m33": [
+  "matches": [
 	{
-		"home": "ars"
-		"away": "eve"
+        "matchday": 33,
+		"home": "ars",
+		"away": "eve",
 		"date": "23.04. 21:00"
 	},
 	{
-		"home": "liv"
-		"away": "new"
+        "matchday": 33,
+		"home": "liv",
+		"away": "new",
 		"date": "24.04. 13:30"
 	},
 	{
-		"home": "whu"
-		"away": "che"
+        "matchday": 33,
+		"home": "whu",
+		"away": "che",
 		"date": "24.04. 18:30"
 	},
 	{
-		"home": "shu"
-		"away": "bha"
+        "matchday": 33,
+		"home": "shu",
+		"away": "bha",
 		"date": "24.04. 21:00"
 	},
 	{
-		"home": "wol"
-		"away": "bur"
+        "matchday": 33,
+		"home": "wol",
+		"away": "bur",
 		"date": "25.04. 13:00"
 	},
 	{
-		"home": "lee"
-		"away": "mun"
-		"date": "25.04. 15:00
+        "matchday": 33,
+		"home": "lee",
+		"away": "mun",
+		"date": "25.04. 15:00"
 	},
 	{
-		"home": "avl"
-		"away": "wba"
+        "matchday": 33,
+		"home": "avl",
+		"away": "wba",
 		"date": "25.04. 21:00"
 	},
 	{
-		"home": "lei"
-		"away": "cry"
+        "matchday": 33,
+		"home": "lei",
+		"away": "cry",
 		"date": "26.04. 21:00"
 	}
-	]
   ]
 }

@@ -80,6 +80,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let cell = tableView.dequeueReusableCell(withIdentifier: TeamTableViewCell.identifier, for: indexPath) as! TeamTableViewCell
         cell.configure(with: standings[indexPath.row])
+
         return cell
     }
     
@@ -97,6 +98,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
     }
+    
+    @IBAction func didTapAdd(_ sender: Any) {
+        
+        let vc = storyboard?.instantiateViewController(identifier: MatchViewController.identifier) as! MatchViewController
+        
+        vc.title = "Fixtures"
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 struct Standings: Decodable {

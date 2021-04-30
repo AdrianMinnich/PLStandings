@@ -12,6 +12,7 @@ class MatchViewController:  UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var table: UITableView!
     
     var matches = [Match]()
+    var standings = [Team]()
     
     static let identifier = "MatchViewController"
     
@@ -19,17 +20,12 @@ class MatchViewController:  UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         
         table.register(MatchTableViewCell.nib(), forCellReuseIdentifier: MatchTableViewCell.identifier)
-        table.allowsSelection = false
+
         self.table.delegate = self
         self.table.dataSource = self
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(didTapSave))
 
         getDataFromJSON()
-    }
-    
-    @objc func didTapSave() {
-        
+        matches = assignTeamsForMatches()
     }
     
     func getDataFromJSON() {
@@ -57,32 +53,38 @@ class MatchViewController:  UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matches.count
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        table.deselectRow(at: indexPath, animated: true)
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: MatchResultViewController.identifier) as! MatchResultViewController
+        vc.match = matches[indexPath.row]
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: MatchTableViewCell.identifier, for: indexPath) as! MatchTableViewCell
         
         cell.matchDateLabel.text = matches[indexPath.row].date
-        cell.team1Label.text = matches[indexPath.row].home
-        cell.team2Label.text = matches[indexPath.row].away
+        cell.team1Label.text = matches[indexPath.row].homeTeam?.short
+        cell.team2Label.text = matches[indexPath.row].awayTeam?.short
         
         return cell
         
     }
-
-}
-
-struct Fixtures: Decodable {
-    var matches: [Match]
-}
-
-struct Match: Decodable {
-    var matchday: Int
-    var home: String
-    var away: String
-    var date: String
     
-    private enum CodingKeys: String, CodingKey {
-        case matchday, home, away, date
+    func assignTeamsForMatches() -> [Match]{
+        
+        for i in 0..<self.matches.count {
+            self.matches[i].homeTeam = standings.first(where: { $0.logo == self.matches[i].home})
+            self.matches[i].awayTeam = standings.first(where: { $0.logo == self.matches[i].away})
+        }
+        return self.matches
     }
 }

@@ -49,4 +49,5 @@ class TeamTableViewCell: UITableViewCell {
         pointsLabel.text = "\(team.points)"
         
     }
+    
 }

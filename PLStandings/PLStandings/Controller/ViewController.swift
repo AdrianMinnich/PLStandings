@@ -87,7 +87,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         table.deselectRow(at: indexPath, animated: true)
         
-        let vc = storyboard?.instantiateViewController(identifier: TeamViewController.identifier) as! TeamViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: TeamViewController.identifier) as! TeamViewController
         
         vc.title = "Team Info"
         vc.team = standings[indexPath.row]
@@ -99,41 +99,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 50.0
     }
     
-    @IBAction func didTapAdd(_ sender: Any) {
+    @IBAction func didTapMatchdays(_ sender: Any) {
         
-        let vc = storyboard?.instantiateViewController(identifier: MatchViewController.identifier) as! MatchViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: MatchViewController.identifier) as! MatchViewController
         
         vc.title = "Fixtures"
+        vc.standings = self.standings
         
         navigationController?.pushViewController(vc, animated: true)
     }
     
-}
-
-struct Standings: Decodable {
-    var teams: [Team]
-}
-
-struct Team: Decodable {
-    let name: String
-    let short: String
-    let matches_played: Int
-    let wins: Int
-    let draws: Int
-    let losses: Int
-    let goals_scored: Int
-    let goals_conceded: Int
-    let points: Int
-    let logo: String
-    var position: Int = 0
-    var goalDiff: Int { return goals_scored - goals_conceded }
-    
-    mutating func setPosition(_ pos: Int) {
-        self.position = pos
-    }
-    
-    private enum CodingKeys: String, CodingKey {
-        case name, short, matches_played, wins, draws, losses, goals_scored,
-             goals_conceded, points, logo
-    }
 }

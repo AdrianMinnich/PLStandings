@@ -14,8 +14,8 @@ class MatchTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var matchDateLabel: UILabel!
     @IBOutlet weak var team1Label: UILabel!
     @IBOutlet weak var team2Label: UILabel!
-    @IBOutlet weak var team1textField: UITextField!
-    @IBOutlet weak var team2textField: UITextField!
+    @IBOutlet weak var team1ResultLabel: UILabel!
+    @IBOutlet weak var team2ResultLabel: UILabel!
     
     static let identifier = "MatchTableViewCell"
     
@@ -26,18 +26,6 @@ class MatchTableViewCell: UITableViewCell, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        team1textField.delegate = self
-        team2textField.delegate = self
-        
-        team1textField.placeholder = "1"
-        team2textField.placeholder = "2"
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        team1textField.resignFirstResponder()
-        team2textField.resignFirstResponder()
-        print(textField.text ?? "")
-        return true
     }
 
 

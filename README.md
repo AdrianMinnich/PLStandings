@@ -5,6 +5,9 @@ Functionalities:
 - getting data from prepared JSON
 - displaying current Premier League table 
 - displaying team info after tapping on them
+- ability to enter results
+- updating table
 
 TODO:
- - giving an opportunity to enter remaining results of the season and updating table
+ - saving the data to User Defaults
+ - enable editing already entered results

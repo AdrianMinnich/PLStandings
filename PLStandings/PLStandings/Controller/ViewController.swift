@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var table: UITableView!
     
     var standings = [Team]()
+    var matches = [Match]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +24,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         table.delegate = self
         table.dataSource = self
         
-        getDataFromJSON()
+        getTeamsDataFromJSON()
+        getMatchdaysDataFromJSON()
     }
     
-    func getDataFromJSON() {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        sortTeamsByPoints()
+        assignPositionsToTeams()
+        
+        DispatchQueue.main.async {
+            self.table.reloadData()
+        }
+    }
+    
+    func getTeamsDataFromJSON() {
         
         self.standings.removeAll()
         
@@ -45,9 +57,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         guard let finalResult = result else { return }
         self.standings.append(contentsOf: finalResult.teams)
         
+        for i in 0..<standings.count {
+            standings[i].setGoalDiff()
+        }
         
         sortTeamsByPoints()
         assignPositionsToTeams()
+        
+        DispatchQueue.main.async {
+            self.table.reloadData()
+        }
+    }
+    
+    func getMatchdaysDataFromJSON() {
+        
+        guard let fileLocation = Bundle.main.url(forResource: "matchdays", withExtension: "json") else { return }
+        
+        var result: Fixtures?
+        
+        do {
+            let data = try Data(contentsOf: fileLocation)
+            result = try JSONDecoder().decode(Fixtures.self, from: data)
+        }
+        catch {
+            print(error)
+        }
+        
+        guard let finalResult = result else { return }
+        self.matches.append(contentsOf: finalResult.matches)
         
         DispatchQueue.main.async {
             self.table.reloadData()
@@ -60,7 +97,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return $0.points > $1.points
             }
             else {
-                return $0.goalDiff > $1.goalDiff
+                return $0.goalDiff! > $1.goalDiff!
             }
         })
     }
@@ -103,10 +140,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let vc = storyboard?.instantiateViewController(withIdentifier: MatchViewController.identifier) as! MatchViewController
         
-        vc.title = "Fixtures"
+        vc.title = "Results"
+        vc.delegate = self
         vc.standings = self.standings
+        vc.matches = self.matches
         
         navigationController?.pushViewController(vc, animated: true)
+        
+        DispatchQueue.main.async {
+            self.table.reloadData()
+        }
+    }
+}
+
+extension ViewController: PassDataDelegate {
+    func passMatchesData(matches: [Match]) {
+        self.matches = matches
+        
+        /*DispatchQueue.main.async {
+            self.table.reloadData()
+        }*/
+    }
+    
+    func passStandingsData(standings: [Team]) {
+        self.standings = standings
+        
+        DispatchQueue.main.async {
+            self.table.reloadData()
+        }
     }
     
 }

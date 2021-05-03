@@ -23,7 +23,6 @@ class TeamViewController: UIViewController {
     @IBOutlet weak var gcLabel: UILabel!
     @IBOutlet weak var gdLabel: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +45,7 @@ class TeamViewController: UIViewController {
         lossesLabel.text = "\(team.losses)"
         gsLabel.text = "\(team.goals_scored)"
         gcLabel.text = "\(team.goals_conceded)"
-        gdLabel.text = "\(team.goalDiff)"
+        guard let goalDiff = team.goalDiff else { return }
+        gdLabel.text = "\(goalDiff)"
     }
 }

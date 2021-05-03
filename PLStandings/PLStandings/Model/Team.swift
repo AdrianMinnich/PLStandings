@@ -11,16 +11,20 @@ import Foundation
 struct Team: Decodable {
     let name: String
     let short: String
-    let matches_played: Int
-    let wins: Int
-    let draws: Int
-    let losses: Int
-    let goals_scored: Int
-    let goals_conceded: Int
-    let points: Int
+    var matches_played: Int
+    var wins: Int
+    var draws: Int
+    var losses: Int
+    var goals_scored: Int
+    var goals_conceded: Int
+    var points: Int
     let logo: String
     var position: Int = 0
-    var goalDiff: Int { return goals_scored - goals_conceded }
+    var goalDiff: Int? = 0
+    
+    mutating func setGoalDiff()  {
+        self.goalDiff = goals_scored - goals_conceded
+    }
     
     mutating func setPosition(_ pos: Int) {
         self.position = pos

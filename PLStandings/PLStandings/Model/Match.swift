@@ -8,14 +8,27 @@
 import Foundation
 
 struct Match: Decodable {
+    var id: Int
     var matchday: Int
     var home: String
     var away: String
     var date: String
     var homeTeam: Team?
     var awayTeam: Team?
+    var homeResult: Int?
+    var awayResult: Int?
+    var homePoints: Int?
+    var awayPoints: Int?
+    var isResultEntered: Bool? = false
+    var matchStatus: MATCH_STATUS = .NOT_PLAYED
     
     private enum CodingKeys: String, CodingKey {
-        case matchday, home, away, date
+        case id, matchday, home, away, date
+    }
+    
+    enum MATCH_STATUS {
+        case NOT_PLAYED
+        case PLAYED
+        case SAVED
     }
 }

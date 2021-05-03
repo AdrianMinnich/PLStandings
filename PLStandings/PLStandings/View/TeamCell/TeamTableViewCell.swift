@@ -40,11 +40,12 @@ class TeamTableViewCell: UITableViewCell {
         teamNameLabel.textAlignment = .left
         matchesPlayedLabel.text = "\(team.matches_played)"
         
-        if team.goalDiff > 0 {
-            goalDiffLabel.text = "+\(team.goalDiff)"
+        guard let goalDiff = team.goalDiff else { return }
+        if goalDiff > 0 {
+            goalDiffLabel.text = "+\(goalDiff)"
         }
         else {
-            goalDiffLabel.text = "\(team.goalDiff)"
+            goalDiffLabel.text = "\(goalDiff)"
         }
         pointsLabel.text = "\(team.points)"
         
